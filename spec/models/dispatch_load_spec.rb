@@ -5,7 +5,7 @@ RSpec.describe DispatchLoad, type: :model do
     subject(:new) { described_class.new(load) }
     let(:load) { build_stubbed(:load) }
 
-    its(:load) { is_expected.to eq (load) }
+    its(:load) { is_expected.to eq load }
   end
 
   describe '#dispatch' do

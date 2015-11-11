@@ -1,14 +1,10 @@
-test:
-  DOMAIN: 'simple-loads.dev'
-  MAILER_SENDER: 'no-reply@simple-loads.dev'
-  SECRET_KEY_BASE: 'ThisIsNotReallyASecret'
-  SECRET_TOKEN: 'ThisIsNotReallyASecret'
-  AIRBRAKE_API_KEY: ''
-  SKYLIGHT_AUTHENTICATION: ''
+DOMAIN: 'simple-loads.dev'
+MAILER_SENDER: 'no-reply@simple-loads.dev'
+SECRET_KEY_BASE: '3b0c86b4489ef2160780b87118a878a2472c4e8d4678488c2d0115a88d2d724b65a910005957caed1cf38a38e8b0293a4a95954677cbf244eda527ad17a0644a'
 
-  SMTP_SERVER: ''
-  SMTP_PORT: ''
-  SMTP_LOGIN: ''
-  SMTP_PASSWORD: ''
+SMTP_SERVER: ''
+SMTP_PORT: ''
+SMTP_LOGIN: ''
+SMTP_PASSWORD: ''
 
-  LOAD_MAILER_RECIPIENTS: 'no-one@test.com'
+LOAD_MAILER_RECIPIENTS: 'no-one@test.com'

@@ -22,5 +22,4 @@ pickle-email-*.html
 *.bowerrc
 bower.json
 
-# Ignore pow environment settings
 .powenv

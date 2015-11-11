@@ -1,4 +1,6 @@
 class DispatchLoad
+  attr_reader :load
+
   def initialize(load)
     @load = load
   end
@@ -15,10 +17,6 @@ class DispatchLoad
     LoadMailer.dispatched(load).deliver_now
 
     true
-  end
-
-  def load
-    @load
   end
 
   def check_load_status

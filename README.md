@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/westernmilling/simple_loads.svg)](https://travis-ci.org/westernmilling/simple_loads)
 [![Code Climate](https://codeclimate.com/github/westernmilling/simple_loads/badges/gpa.svg)](https://codeclimate.com/github/westernmilling/simple_loads)
 [![Test Coverage](https://codeclimate.com/github/westernmilling/simple_loads/badges/coverage.svg)](https://codeclimate.com/github/westernmilling/simple_loads/coverage)
+[![Dependency Status](https://gemnasium.com/westernmilling/simple_loads.svg)](https://gemnasium.com/westernmilling/simple_loads)
 
 # simple_loads
 This is a very crude "logistics" app to serve as a base for technical

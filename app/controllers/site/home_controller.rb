@@ -1,2 +1,4 @@
-class Site::HomeController < ApplicationController
+module Site
+  class HomeController < ApplicationController
+  end
 end
