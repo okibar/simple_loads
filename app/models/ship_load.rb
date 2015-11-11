@@ -27,6 +27,5 @@ class ShipLoad
 
     fail I18n.t('ship_load.errors.shipped') \
       if load.status == :shipped
-
   end
 end

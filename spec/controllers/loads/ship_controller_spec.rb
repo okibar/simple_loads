@@ -37,10 +37,14 @@ RSpec.describe Loads::ShipController, type: :controller do
 
     context 'when the ship is successful' do
       let(:ship?) { true }
-      let(:params) { %[ { 
-        "ship_date": "#{Faker::Date.between(2.days.ago, Date.today)}",
-        "weight_gross": "#{Faker::Number.number(4)}" 
-      } ] }
+      let(:params) do
+        %[
+          {
+            "ship_date": "#{Faker::Date.between(2.days.ago, Time.zone.today)}",
+            "weight_gross": "#{Faker::Number.number(4)}"
+          }
+        ]
+      end
 
       it_behaves_like 'a redirect'
       it_behaves_like 'load index'
@@ -52,10 +56,14 @@ RSpec.describe Loads::ShipController, type: :controller do
 
     context 'when the ship is not successful' do
       let(:ship?) { false }
-      let(:params) { %[ { 
-        "ship_date": "#{Faker::Date.between(2.days.ago, Date.today)}",
-        "weight_gross": "#{Faker::Number.number(4)}" 
-      } ] }
+      let(:params) do
+        %[
+          {
+            "ship_date": "#{Faker::Date.between(2.days.ago, Time.zone.today)}",
+            "weight_gross": "#{Faker::Number.number(4)}"
+          }
+        ]
+      end
 
       it_behaves_like 'a redirect'
       it_behaves_like 'load index'

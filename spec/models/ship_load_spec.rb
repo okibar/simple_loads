@@ -20,9 +20,9 @@ RSpec.describe ShipLoad, type: :model do
       stubbed
     end
     let(:arguments) do
-      OpenStruct.new(ship_date: 
-                            Faker::Date.between(2.days.ago, Date.today).to_s,
-                     weight_gross: Faker::Number.number(4))
+      OpenStruct.new(
+        ship_date: Faker::Date.between(2.days.ago, Time.zone.today).to_s,
+        weight_gross: Faker::Number.number(4))
     end
     subject(:ship) { model.ship(arguments) }
 
