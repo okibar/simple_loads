@@ -1,12 +1,15 @@
 $(document).ready(function() {
   $('button.ship-tmpl').click(function(){
     var data_json = JSON.parse($(this).attr("data"));
-    $('form#ship-form')[0].action = "/loads/" + data_json.id + "/ship"
+    $('form#ship-form')[0].action = "/loads/" + data_json.id + "/ship";
+    var scale_weight = Math.floor(Math.random() * 450 + 50);
     var new_data_json_string = 
         "{\n" +
-        "  \"date\": \"" + new Date() + "\"," +
-        "  \"scale_weight\": \"" + Math.floor(Math.random() * 450 + 50) + "\"" +
-        "}"
+        "  \"load\": {" +
+        "    \"ship_date\": \"" + new Date() + "\"," +
+        "    \"weight_gross\": \"" + scale_weight + "\"" +
+        "  }" +
+        "}";
     $('input#ship-form-hidden').attr("value", new_data_json_string);
     $('div.modal-body').attr("db-data", $(this).attr("data"));
     $('div.modal-body').attr("new-data", new_data_json_string);
@@ -23,8 +26,8 @@ $(document).ready(function() {
         "<li>Requested Date: {%= o.requested_date %}</li>",
         JSON.parse($(this).attr("db-data"))
       ) + tmpl(
-        "<li class=\"text-success\">Scale Weight: {%= o.scale_weight %}</li>" +
-        "<li class=\"text-success\">Ship Date: {%= o.date %}</li>",
+        "<li class=\"text-success\">Scale Weight: {%= o.load.weight_gross %}</li>" +
+        "<li class=\"text-success\">Ship Date: {%= o.load.ship_date %}</li>",
         JSON.parse($(this).attr("new-data"))
       );
     });
