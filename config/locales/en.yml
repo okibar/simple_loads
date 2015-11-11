@@ -9,8 +9,12 @@ en:
         submit: 'Save'
         title: 'Dispatch Load'
       update:
-        failure: 'Load dispatched successfully'
-        success: 'Failed to dispatch the Load'
+        failure: 'Failed to dispatch the Load'
+        success: 'Load dispatched successfully'
+    ship:
+      update:
+        success: 'Load shipped successfully'
+        failure: 'Failed to ship the Load'
     create:
       success: 'Load created successfully'
     edit:
@@ -30,10 +34,16 @@ en:
       title: 'Load'
     update:
       success: 'Load updated successfully'
+  ship_load:
+    errors:
+      new: 'You may not ship a load that has not been dispatched'
+      shipped: 'You may not ship a load that has been shipped'
   dispatch_load:
     errors:
       dispatched: 'You may not dispatch a load that has already been dispatched'
       shipped: 'You may not dispatch a load that has been shipped'
   load_mailer:
+    shipped:
+      subject: 'Load Shipped'
     dispatched:
       subject: 'Load Dispatched'
