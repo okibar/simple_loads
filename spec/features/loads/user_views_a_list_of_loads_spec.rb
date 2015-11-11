@@ -25,10 +25,12 @@ feature 'user views a list of loads' do
 end
 
 def expect_load_row(load)
-  expect(page).to have_content(load.customer_name)
-  expect(page).to have_content(load.customer_location)
-  expect(page).to have_content(load.origin_location)
-  expect(page).to have_content(load.product_description)
-  expect(page).to have_content(load.requested_date)
-  expect(page).to have_content(load.status)
+  [:customer_name,
+   :customer_location,
+   :origin_location,
+   :product_description,
+   :requested_date,
+   :status].each do |symbol|
+    expect(page).to have_content(load.send(symbol))
+  end
 end
