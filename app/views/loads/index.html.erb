@@ -59,6 +59,13 @@
       <td><%= load.status %></td>
       <td>
         <nav>
+          <% if load.status == :dispatched %>
+            <button type="button" class="btn btn-default btn-sm ship-tmpl"
+                    data-toggle="modal" data-target="#shipModal"
+                    data="<%= load.to_json %>">
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
+          <% end %>
           <%= link_to edit_load_path(load),
                       class: 'btn btn-default btn-sm' do %>
             <span class="glyphicon glyphicon-pencil"></span>
@@ -77,3 +84,25 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="shipModal" tabindex=-1
+     role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Finalize Shipment</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <%= form_tag(load_ship_path(1), method: :patch, id: "ship-form") do %>
+          <button type="button" class="btn"
+                  data-dismiss="modal">Cancel</button>
+          <input type="hidden" id="load" name="load" value="" />
+          <input type="submit" class="btn btn-primary" value="Ship" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,10 @@ shared_context 'an index' do
   it { is_expected.to render_template(:index) }
 end
 
+shared_context 'load index' do
+  it { is_expected.to redirect_to(loads_path) }
+end
+
 shared_context 'a new' do
   it { is_expected.to render_template(:new) }
 end
