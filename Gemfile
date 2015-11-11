@@ -13,6 +13,7 @@ gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'virtus'
+gem 'blueimp-templates-rails'
 
 group :development, :test do
   gem 'byebug'
