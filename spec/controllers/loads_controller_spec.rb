@@ -23,6 +23,21 @@ RSpec.describe LoadsController, type: :controller do
     it_behaves_like 'an index'
   end
 
+  describe 'driver select bug #1' do
+    before do
+      allow(Load)
+        .to receive(:order)
+        .with(:requested_date)
+        .and_return(Load.where(id: drivers.map(&:id)).order(:id))
+
+      get :index
+    end
+    let(:drivers) { [ driver1, driver2 ] }
+    let(:driver1) { FactoryGirl.create(:load, { driver_name: "driver1" }) }
+    let(:driver2) { FactoryGirl.create(:load, { driver_name: "driver2" }) }
+    it { expect(assigns(:drivers)).to eq(drivers.map(&:driver_name)) }
+  end
+
   describe 'GET new' do
     before { get :new }
 
