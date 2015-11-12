@@ -38,7 +38,7 @@ class LoadsController < ApplicationController
   protected
 
   def drivers
-    @drivers ||= loads.map(&:driver_name).uniq! || []
+    @drivers ||= loads.map(&:driver_name).uniq || []
   end
 
   def loads
