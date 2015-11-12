@@ -38,6 +38,23 @@ RSpec.describe LoadsController, type: :controller do
     it { expect(assigns(:drivers)).to eq(drivers.map(&:driver_name)) }
   end
 
+  describe 'driver select bug #2' do
+    before do
+      allow(Load)
+        .to receive(:order)
+        .with(:requested_date)
+        .and_return(Load.where(id: drivers.map(&:id)).order(:id))
+
+      get :index, q: { "driver_name_eq"=>"", "status_eq"=>"dispatched" }
+    end
+    let(:drivers) { [driver1, driver2] }
+    let(:driver1) { FactoryGirl.create(:load, { driver_name: 'driver1',
+                                                status: :dispatched } ) }
+    let(:driver2) { FactoryGirl.create(:load, { driver_name: 'driver2',
+                                                status: :shipped } ) }
+    it { expect(assigns(:drivers)).to eq(drivers.map(&:driver_name)) }
+  end
+
   describe 'GET new' do
     before { get :new }
 
