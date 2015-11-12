@@ -42,11 +42,11 @@ class LoadsController < ApplicationController
   end
 
   def loads
-    @loads ||= search.result
+    @loads ||= Load.order(:requested_date)
   end
 
   def search
-    @search ||= Load.order(:requested_date).search(params[:q])
+    @search ||= loads.search(params[:q])
   end
 
   def find_load
@@ -87,7 +87,7 @@ class LoadsController < ApplicationController
 
   def render_index
     render :index,
-           locals: { drivers: drivers, loads: loads, search: search }
+           locals: { drivers: drivers, loads: search.result, search: search }
   end
 
   def render_show
