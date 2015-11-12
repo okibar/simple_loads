@@ -32,9 +32,9 @@ RSpec.describe LoadsController, type: :controller do
 
       get :index
     end
-    let(:drivers) { [ driver1, driver2 ] }
-    let(:driver1) { FactoryGirl.create(:load, { driver_name: "driver1" }) }
-    let(:driver2) { FactoryGirl.create(:load, { driver_name: "driver2" }) }
+    let(:drivers) { [driver1, driver2] }
+    let(:driver1) { FactoryGirl.create(:load, driver_name: 'driver1') }
+    let(:driver2) { FactoryGirl.create(:load, driver_name: 'driver2') }
     it { expect(assigns(:drivers)).to eq(drivers.map(&:driver_name)) }
   end
 
