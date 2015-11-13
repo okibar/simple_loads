@@ -66,6 +66,13 @@
               <span class="glyphicon glyphicon-send"></span>
             </button>
           <% end %>
+          <% if load.status == :new %>
+            <button type="button" class="btn btn-default btn-sm dispatch-tmpl"
+                    data-toggle="modal" data-target="#dispatchModal"
+                    data="<%= load.to_json %>">
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+            </button>
+          <% end %>
           <%= link_to edit_load_path(load),
                       class: 'btn btn-default btn-sm' do %>
             <span class="glyphicon glyphicon-pencil"></span>
@@ -93,7 +100,7 @@
       <div class="modal-header">
         <h4 class="modal-title">Finalize Shipment</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="modal-ship-tmpl-body">
       </div>
       <div class="modal-footer">
         <%= form_tag(load_ship_path(1), method: :patch, id: "ship-form") do %>
@@ -101,6 +108,32 @@
                   data-dismiss="modal">Cancel</button>
           <input type="hidden" id="load" name="load" value="" />
           <input type="submit" class="btn btn-primary" value="Ship" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dispatchModal" tabindex=-1
+     role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Dispatch</h4>
+      </div>
+      <div class="modal-body" id="modal-dispatch-tmpl-body">
+      </div>
+      <div class="modal-body">
+        <%= form_tag(load_dispatch_path(1), method: :patch, id: "dispatch-form") do %>
+          <li>Driver: <input type="text" name="driver_name" /></li>
+          <li>Carrier: <input type="text" name="carrier_name" /></li>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn"
+                  data-dismiss="modal">Cancel</button>
+          <input type="hidden" id="entry" name="entry" value="" />
+          <input type="submit" class="btn btn-primary" value="Dispatch" />
         <% end %>
       </div>
     </div>

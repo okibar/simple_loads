@@ -4,6 +4,11 @@ module Loads
       render_edit
     end
 
+    def quickupdate
+      quickentry
+      update
+    end
+
     def update
       render_edit and return unless entry.valid?
 
@@ -21,7 +26,11 @@ module Loads
     end
 
     def entry
-      @entry ||= build_entry
+      @entry ||= build_entry(entry_params)
+    end
+
+    def quickentry
+      @entry = build_entry(quickentry_params)
     end
 
     protected
@@ -38,17 +47,29 @@ module Loads
       Load.find(params[:load_id])
     end
 
-    def build_entry
-      DispatchLoadEntry.new(entry_params)
+    def build_entry(params)
+      DispatchLoadEntry.new(params)
     end
 
     def entry_params
       return {} if params[:entry].nil? || params[:entry].empty?
-
       params
         .require(:entry)
         .permit(:carrier_name,
                 :driver_name)
+    end
+
+    def quickentry_params
+      return {} if params[:entry].nil? || params[:entry].empty?
+      entry_hash = JSON.parse(params.require(:entry))
+      entry_hash[:driver_name] = params[:driver_name]
+      entry_hash[:carrier_name] = params[:carrier_name]
+      subparams = ActionController::Parameters.new(entry_hash)
+
+      subparams
+        .permit(:driver_name,
+                :carrier_name,
+                :weight_tare)
     end
   end
 end

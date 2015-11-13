@@ -10,6 +10,7 @@ class DispatchLoad
 
     @load.carrier_name = object.carrier_name
     @load.driver_name = object.driver_name
+    @load.weight_tare = object.weight_tare if object.weight_tare
     @load.status = :dispatched
 
     return false unless @load.save
