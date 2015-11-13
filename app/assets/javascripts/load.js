@@ -41,6 +41,6 @@ $(document).ready(function() {
     var data_json = JSON.parse($(this).attr("data"));
     $('form#ship-form')[0].action = "/loads/" + data_json.id + "/ship";
     $('div.modal-body').attr("db-data", $(this).attr("data"));
-    $('div.modal-body').shipUpdate();
+    setTimeout($('div.modal-body').shipUpdate, 300);
   });
 });
